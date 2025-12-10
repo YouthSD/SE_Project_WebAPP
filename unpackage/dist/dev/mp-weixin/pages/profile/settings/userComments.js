@@ -6,7 +6,6 @@ const _sfc_main = {
       primaryColor: "#00CC99",
       comments: [
         { id: 1, postId: 101, postTitle: "春天种的植物发芽了", content: "写得太好了！照片也很漂亮！", date: "2025-12-09 10:30" },
-        { id: 2, postId: 102, postTitle: "今日份美食分享", content: "看起来好好吃，求做法！", date: "2025-12-08 15:20" },
         { id: 3, postId: 103, postTitle: "关于uni-app的一些心得", content: "学到了，感谢分享！", date: "2025-12-07 09:00" }
       ]
     };
@@ -21,7 +20,7 @@ const _sfc_main = {
     fetchUserComments() {
     },
     goToPost(postId) {
-      common_vendor.index.navigateTo({ url: `postDetail?id=${postId}` });
+      common_vendor.index.navigateTo({ url: `/pages/home/postDetail?id=${postId}` });
     },
     confirmDelete(comment) {
       common_vendor.index.showModal({
@@ -63,7 +62,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.o($options.goBack),
     b: common_vendor.p({
-      iconSize: "50"
+      ["icon-size"]: "50"
     }),
     c: $data.primaryColor,
     d: $data.comments.length === 0

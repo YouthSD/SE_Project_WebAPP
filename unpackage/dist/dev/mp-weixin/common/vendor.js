@@ -8283,21 +8283,21 @@ const popup = {
     }
   }
 };
-const en = {
+const en$1 = {
   "uni-popup.cancel": "cancel",
   "uni-popup.ok": "ok",
   "uni-popup.placeholder": "pleace enter",
   "uni-popup.title": "Hint",
   "uni-popup.shareTitle": "Share to"
 };
-const zhHans = {
+const zhHans$1 = {
   "uni-popup.cancel": "取消",
   "uni-popup.ok": "确定",
   "uni-popup.placeholder": "请输入",
   "uni-popup.title": "提示",
   "uni-popup.shareTitle": "分享到"
 };
-const zhHant = {
+const zhHant$1 = {
   "uni-popup.cancel": "取消",
   "uni-popup.ok": "確定",
   "uni-popup.placeholder": "請輸入",
@@ -8305,10 +8305,437 @@ const zhHant = {
   "uni-popup.shareTitle": "分享到"
 };
 const messages = {
+  en: en$1,
+  "zh-Hans": zhHans$1,
+  "zh-Hant": zhHant$1
+};
+const en = {
+  "uni-datetime-picker.selectDate": "select date",
+  "uni-datetime-picker.selectTime": "select time",
+  "uni-datetime-picker.selectDateTime": "select date and time",
+  "uni-datetime-picker.startDate": "start date",
+  "uni-datetime-picker.endDate": "end date",
+  "uni-datetime-picker.startTime": "start time",
+  "uni-datetime-picker.endTime": "end time",
+  "uni-datetime-picker.ok": "ok",
+  "uni-datetime-picker.clear": "clear",
+  "uni-datetime-picker.cancel": "cancel",
+  "uni-datetime-picker.year": "-",
+  "uni-datetime-picker.month": "",
+  "uni-calender.MON": "MON",
+  "uni-calender.TUE": "TUE",
+  "uni-calender.WED": "WED",
+  "uni-calender.THU": "THU",
+  "uni-calender.FRI": "FRI",
+  "uni-calender.SAT": "SAT",
+  "uni-calender.SUN": "SUN",
+  "uni-calender.confirm": "confirm"
+};
+const zhHans = {
+  "uni-datetime-picker.selectDate": "选择日期",
+  "uni-datetime-picker.selectTime": "选择时间",
+  "uni-datetime-picker.selectDateTime": "选择日期时间",
+  "uni-datetime-picker.startDate": "开始日期",
+  "uni-datetime-picker.endDate": "结束日期",
+  "uni-datetime-picker.startTime": "开始时间",
+  "uni-datetime-picker.endTime": "结束时间",
+  "uni-datetime-picker.ok": "确定",
+  "uni-datetime-picker.clear": "清除",
+  "uni-datetime-picker.cancel": "取消",
+  "uni-datetime-picker.year": "年",
+  "uni-datetime-picker.month": "月",
+  "uni-calender.SUN": "日",
+  "uni-calender.MON": "一",
+  "uni-calender.TUE": "二",
+  "uni-calender.WED": "三",
+  "uni-calender.THU": "四",
+  "uni-calender.FRI": "五",
+  "uni-calender.SAT": "六",
+  "uni-calender.confirm": "确认"
+};
+const zhHant = {
+  "uni-datetime-picker.selectDate": "選擇日期",
+  "uni-datetime-picker.selectTime": "選擇時間",
+  "uni-datetime-picker.selectDateTime": "選擇日期時間",
+  "uni-datetime-picker.startDate": "開始日期",
+  "uni-datetime-picker.endDate": "結束日期",
+  "uni-datetime-picker.startTime": "開始时间",
+  "uni-datetime-picker.endTime": "結束时间",
+  "uni-datetime-picker.ok": "確定",
+  "uni-datetime-picker.clear": "清除",
+  "uni-datetime-picker.cancel": "取消",
+  "uni-datetime-picker.year": "年",
+  "uni-datetime-picker.month": "月",
+  "uni-calender.SUN": "日",
+  "uni-calender.MON": "一",
+  "uni-calender.TUE": "二",
+  "uni-calender.WED": "三",
+  "uni-calender.THU": "四",
+  "uni-calender.FRI": "五",
+  "uni-calender.SAT": "六",
+  "uni-calender.confirm": "確認"
+};
+const i18nMessages = {
   en,
   "zh-Hans": zhHans,
   "zh-Hant": zhHant
 };
+class Calendar {
+  constructor({
+    selected,
+    startDate,
+    endDate,
+    range
+  } = {}) {
+    this.date = this.getDateObj(/* @__PURE__ */ new Date());
+    this.selected = selected || [];
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.range = range;
+    this.cleanMultipleStatus();
+    this.weeks = {};
+    this.lastHover = false;
+  }
+  /**
+   * 设置日期
+   * @param {Object} date
+   */
+  setDate(date) {
+    const selectDate = this.getDateObj(date);
+    this.getWeeks(selectDate.fullDate);
+  }
+  /**
+   * 清理多选状态
+   */
+  cleanMultipleStatus() {
+    this.multipleStatus = {
+      before: "",
+      after: "",
+      data: []
+    };
+  }
+  setStartDate(startDate) {
+    this.startDate = startDate;
+  }
+  setEndDate(endDate) {
+    this.endDate = endDate;
+  }
+  getPreMonthObj(date) {
+    date = fixIosDateFormat(date);
+    date = new Date(date);
+    const oldMonth = date.getMonth();
+    date.setMonth(oldMonth - 1);
+    const newMonth = date.getMonth();
+    if (oldMonth !== 0 && newMonth - oldMonth === 0) {
+      date.setMonth(newMonth - 1);
+    }
+    return this.getDateObj(date);
+  }
+  getNextMonthObj(date) {
+    date = fixIosDateFormat(date);
+    date = new Date(date);
+    const oldMonth = date.getMonth();
+    date.setMonth(oldMonth + 1);
+    const newMonth = date.getMonth();
+    if (newMonth - oldMonth > 1) {
+      date.setMonth(newMonth - 1);
+    }
+    return this.getDateObj(date);
+  }
+  /**
+   * 获取指定格式Date对象
+   */
+  getDateObj(date) {
+    date = fixIosDateFormat(date);
+    date = new Date(date);
+    return {
+      fullDate: getDate(date),
+      year: date.getFullYear(),
+      month: addZero(date.getMonth() + 1),
+      date: addZero(date.getDate()),
+      day: date.getDay()
+    };
+  }
+  /**
+   * 获取上一个月日期集合
+   */
+  getPreMonthDays(amount, dateObj) {
+    const result = [];
+    for (let i = amount - 1; i >= 0; i--) {
+      const month = dateObj.month - 1;
+      result.push({
+        date: new Date(dateObj.year, month, -i).getDate(),
+        month,
+        disable: true
+      });
+    }
+    return result;
+  }
+  /**
+   * 获取本月日期集合
+   */
+  getCurrentMonthDays(amount, dateObj) {
+    const result = [];
+    const fullDate = this.date.fullDate;
+    for (let i = 1; i <= amount; i++) {
+      const currentDate = `${dateObj.year}-${dateObj.month}-${addZero(i)}`;
+      const isToday = fullDate === currentDate;
+      const info = this.selected && this.selected.find((item) => {
+        if (this.dateEqual(currentDate, item.date)) {
+          return item;
+        }
+      });
+      if (this.startDate) {
+        dateCompare(this.startDate, currentDate);
+      }
+      if (this.endDate) {
+        dateCompare(currentDate, this.endDate);
+      }
+      let multiples = this.multipleStatus.data;
+      let multiplesStatus = -1;
+      if (this.range && multiples) {
+        multiplesStatus = multiples.findIndex((item) => {
+          return this.dateEqual(item, currentDate);
+        });
+      }
+      const checked = multiplesStatus !== -1;
+      result.push({
+        fullDate: currentDate,
+        year: dateObj.year,
+        date: i,
+        multiple: this.range ? checked : false,
+        beforeMultiple: this.isLogicBefore(currentDate, this.multipleStatus.before, this.multipleStatus.after),
+        afterMultiple: this.isLogicAfter(currentDate, this.multipleStatus.before, this.multipleStatus.after),
+        month: dateObj.month,
+        disable: this.startDate && !dateCompare(this.startDate, currentDate) || this.endDate && !dateCompare(
+          currentDate,
+          this.endDate
+        ),
+        isToday,
+        userChecked: false,
+        extraInfo: info
+      });
+    }
+    return result;
+  }
+  /**
+   * 获取下一个月日期集合
+   */
+  _getNextMonthDays(amount, dateObj) {
+    const result = [];
+    const month = dateObj.month + 1;
+    for (let i = 1; i <= amount; i++) {
+      result.push({
+        date: i,
+        month,
+        disable: true
+      });
+    }
+    return result;
+  }
+  /**
+   * 获取当前日期详情
+   * @param {Object} date
+   */
+  getInfo(date) {
+    if (!date) {
+      date = /* @__PURE__ */ new Date();
+    }
+    const res = this.calendar.find((item) => item.fullDate === this.getDateObj(date).fullDate);
+    return res ? res : this.getDateObj(date);
+  }
+  /**
+   * 比较时间是否相等
+   */
+  dateEqual(before, after) {
+    before = new Date(fixIosDateFormat(before));
+    after = new Date(fixIosDateFormat(after));
+    return before.valueOf() === after.valueOf();
+  }
+  /**
+   *  比较真实起始日期
+   */
+  isLogicBefore(currentDate, before, after) {
+    let logicBefore = before;
+    if (before && after) {
+      logicBefore = dateCompare(before, after) ? before : after;
+    }
+    return this.dateEqual(logicBefore, currentDate);
+  }
+  isLogicAfter(currentDate, before, after) {
+    let logicAfter = after;
+    if (before && after) {
+      logicAfter = dateCompare(before, after) ? after : before;
+    }
+    return this.dateEqual(logicAfter, currentDate);
+  }
+  /**
+   * 获取日期范围内所有日期
+   * @param {Object} begin
+   * @param {Object} end
+   */
+  geDateAll(begin, end) {
+    var arr = [];
+    var ab = begin.split("-");
+    var ae = end.split("-");
+    var db = /* @__PURE__ */ new Date();
+    db.setFullYear(ab[0], ab[1] - 1, ab[2]);
+    var de = /* @__PURE__ */ new Date();
+    de.setFullYear(ae[0], ae[1] - 1, ae[2]);
+    var unixDb = db.getTime() - 24 * 60 * 60 * 1e3;
+    var unixDe = de.getTime() - 24 * 60 * 60 * 1e3;
+    for (var k = unixDb; k <= unixDe; ) {
+      k = k + 24 * 60 * 60 * 1e3;
+      arr.push(this.getDateObj(new Date(parseInt(k))).fullDate);
+    }
+    return arr;
+  }
+  /**
+   *  获取多选状态
+   */
+  setMultiple(fullDate) {
+    if (!this.range)
+      return;
+    let {
+      before,
+      after
+    } = this.multipleStatus;
+    if (before && after) {
+      if (!this.lastHover) {
+        this.lastHover = true;
+        return;
+      }
+      this.multipleStatus.before = fullDate;
+      this.multipleStatus.after = "";
+      this.multipleStatus.data = [];
+      this.multipleStatus.fulldate = "";
+      this.lastHover = false;
+    } else {
+      if (!before) {
+        this.multipleStatus.before = fullDate;
+        this.multipleStatus.after = void 0;
+        this.lastHover = false;
+      } else {
+        this.multipleStatus.after = fullDate;
+        if (dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
+          this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
+        } else {
+          this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
+        }
+        this.lastHover = true;
+      }
+    }
+    this.getWeeks(fullDate);
+  }
+  /**
+   *  鼠标 hover 更新多选状态
+   */
+  setHoverMultiple(fullDate) {
+    if (!this.range || this.lastHover)
+      return;
+    const {
+      before
+    } = this.multipleStatus;
+    if (!before) {
+      this.multipleStatus.before = fullDate;
+    } else {
+      this.multipleStatus.after = fullDate;
+      if (dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
+        this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
+      } else {
+        this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
+      }
+    }
+    this.getWeeks(fullDate);
+  }
+  /**
+   * 更新默认值多选状态
+   */
+  setDefaultMultiple(before, after) {
+    this.multipleStatus.before = before;
+    this.multipleStatus.after = after;
+    if (before && after) {
+      if (dateCompare(before, after)) {
+        this.multipleStatus.data = this.geDateAll(before, after);
+        this.getWeeks(after);
+      } else {
+        this.multipleStatus.data = this.geDateAll(after, before);
+        this.getWeeks(before);
+      }
+    }
+  }
+  /**
+   * 获取每周数据
+   * @param {Object} dateData
+   */
+  getWeeks(dateData) {
+    const {
+      year,
+      month
+    } = this.getDateObj(dateData);
+    const preMonthDayAmount = new Date(year, month - 1, 1).getDay();
+    const preMonthDays = this.getPreMonthDays(preMonthDayAmount, this.getDateObj(dateData));
+    const currentMonthDayAmount = new Date(year, month, 0).getDate();
+    const currentMonthDays = this.getCurrentMonthDays(currentMonthDayAmount, this.getDateObj(dateData));
+    const nextMonthDayAmount = 42 - preMonthDayAmount - currentMonthDayAmount;
+    const nextMonthDays = this._getNextMonthDays(nextMonthDayAmount, this.getDateObj(dateData));
+    const calendarDays = [...preMonthDays, ...currentMonthDays, ...nextMonthDays];
+    const weeks = new Array(6);
+    for (let i = 0; i < calendarDays.length; i++) {
+      const index2 = Math.floor(i / 7);
+      if (!weeks[index2]) {
+        weeks[index2] = new Array(7);
+      }
+      weeks[index2][i % 7] = calendarDays[i];
+    }
+    this.calendar = calendarDays;
+    this.weeks = weeks;
+  }
+}
+function getDateTime(date, hideSecond) {
+  return `${getDate(date)} ${getTime(date, hideSecond)}`;
+}
+function getDate(date) {
+  date = fixIosDateFormat(date);
+  date = new Date(date);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return `${year}-${addZero(month)}-${addZero(day)}`;
+}
+function getTime(date, hideSecond) {
+  date = fixIosDateFormat(date);
+  date = new Date(date);
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
+  return hideSecond ? `${addZero(hour)}:${addZero(minute)}` : `${addZero(hour)}:${addZero(minute)}:${addZero(second)}`;
+}
+function addZero(num) {
+  if (num < 10) {
+    num = `0${num}`;
+  }
+  return num;
+}
+function getDefaultSecond(hideSecond) {
+  return hideSecond ? "00:00" : "00:00:00";
+}
+function dateCompare(startDate, endDate) {
+  startDate = new Date(fixIosDateFormat(typeof startDate === "string" ? startDate.trim() : startDate));
+  endDate = new Date(fixIosDateFormat(typeof endDate === "string" ? endDate.trim() : endDate));
+  return startDate <= endDate;
+}
+function checkDate(date) {
+  const dateReg = /((19|20)\d{2})(-|\/)\d{1,2}(-|\/)\d{1,2}/g;
+  return date.match(dateReg);
+}
+const dateTimeReg = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])( [0-5]?[0-9]:[0-5]?[0-9](:[0-5]?[0-9])?)?$/;
+function fixIosDateFormat(value) {
+  if (typeof value === "string" && dateTimeReg.test(value)) {
+    value = value.replace(/-/g, "/");
+  }
+  return value;
+}
 class MPAnimation {
   constructor(options, _this) {
     this.options = options;
@@ -8421,11 +8848,667 @@ function createAnimation(option, _this) {
   clearTimeout(_this.timer);
   return new MPAnimation(option, _this);
 }
+const fontData = [
+  {
+    "font_class": "arrow-down",
+    "unicode": ""
+  },
+  {
+    "font_class": "arrow-left",
+    "unicode": ""
+  },
+  {
+    "font_class": "arrow-right",
+    "unicode": ""
+  },
+  {
+    "font_class": "arrow-up",
+    "unicode": ""
+  },
+  {
+    "font_class": "auth",
+    "unicode": ""
+  },
+  {
+    "font_class": "auth-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "back",
+    "unicode": ""
+  },
+  {
+    "font_class": "bars",
+    "unicode": ""
+  },
+  {
+    "font_class": "calendar",
+    "unicode": ""
+  },
+  {
+    "font_class": "calendar-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "camera",
+    "unicode": ""
+  },
+  {
+    "font_class": "camera-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "cart",
+    "unicode": ""
+  },
+  {
+    "font_class": "cart-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "chat",
+    "unicode": ""
+  },
+  {
+    "font_class": "chat-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "chatboxes",
+    "unicode": ""
+  },
+  {
+    "font_class": "chatboxes-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "chatbubble",
+    "unicode": ""
+  },
+  {
+    "font_class": "chatbubble-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "checkbox",
+    "unicode": ""
+  },
+  {
+    "font_class": "checkbox-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "checkmarkempty",
+    "unicode": ""
+  },
+  {
+    "font_class": "circle",
+    "unicode": ""
+  },
+  {
+    "font_class": "circle-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "clear",
+    "unicode": ""
+  },
+  {
+    "font_class": "close",
+    "unicode": ""
+  },
+  {
+    "font_class": "closeempty",
+    "unicode": ""
+  },
+  {
+    "font_class": "cloud-download",
+    "unicode": ""
+  },
+  {
+    "font_class": "cloud-download-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "cloud-upload",
+    "unicode": ""
+  },
+  {
+    "font_class": "cloud-upload-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "color",
+    "unicode": ""
+  },
+  {
+    "font_class": "color-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "compose",
+    "unicode": ""
+  },
+  {
+    "font_class": "contact",
+    "unicode": ""
+  },
+  {
+    "font_class": "contact-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "down",
+    "unicode": ""
+  },
+  {
+    "font_class": "bottom",
+    "unicode": ""
+  },
+  {
+    "font_class": "download",
+    "unicode": ""
+  },
+  {
+    "font_class": "download-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "email",
+    "unicode": ""
+  },
+  {
+    "font_class": "email-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "eye",
+    "unicode": ""
+  },
+  {
+    "font_class": "eye-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "eye-slash",
+    "unicode": ""
+  },
+  {
+    "font_class": "eye-slash-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "fire",
+    "unicode": ""
+  },
+  {
+    "font_class": "fire-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "flag",
+    "unicode": ""
+  },
+  {
+    "font_class": "flag-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "folder-add",
+    "unicode": ""
+  },
+  {
+    "font_class": "folder-add-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "font",
+    "unicode": ""
+  },
+  {
+    "font_class": "forward",
+    "unicode": ""
+  },
+  {
+    "font_class": "gear",
+    "unicode": ""
+  },
+  {
+    "font_class": "gear-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "gift",
+    "unicode": ""
+  },
+  {
+    "font_class": "gift-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "hand-down",
+    "unicode": ""
+  },
+  {
+    "font_class": "hand-down-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "hand-up",
+    "unicode": ""
+  },
+  {
+    "font_class": "hand-up-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "headphones",
+    "unicode": ""
+  },
+  {
+    "font_class": "heart",
+    "unicode": ""
+  },
+  {
+    "font_class": "heart-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "help",
+    "unicode": ""
+  },
+  {
+    "font_class": "help-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "home",
+    "unicode": ""
+  },
+  {
+    "font_class": "home-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "image",
+    "unicode": ""
+  },
+  {
+    "font_class": "image-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "images",
+    "unicode": ""
+  },
+  {
+    "font_class": "images-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "info",
+    "unicode": ""
+  },
+  {
+    "font_class": "info-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "left",
+    "unicode": ""
+  },
+  {
+    "font_class": "link",
+    "unicode": ""
+  },
+  {
+    "font_class": "list",
+    "unicode": ""
+  },
+  {
+    "font_class": "location",
+    "unicode": ""
+  },
+  {
+    "font_class": "location-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "locked",
+    "unicode": ""
+  },
+  {
+    "font_class": "locked-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "loop",
+    "unicode": ""
+  },
+  {
+    "font_class": "mail-open",
+    "unicode": ""
+  },
+  {
+    "font_class": "mail-open-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "map",
+    "unicode": ""
+  },
+  {
+    "font_class": "map-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "map-pin",
+    "unicode": ""
+  },
+  {
+    "font_class": "map-pin-ellipse",
+    "unicode": ""
+  },
+  {
+    "font_class": "medal",
+    "unicode": ""
+  },
+  {
+    "font_class": "medal-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "mic",
+    "unicode": ""
+  },
+  {
+    "font_class": "mic-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "micoff",
+    "unicode": ""
+  },
+  {
+    "font_class": "micoff-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "minus",
+    "unicode": ""
+  },
+  {
+    "font_class": "minus-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "more",
+    "unicode": ""
+  },
+  {
+    "font_class": "more-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "navigate",
+    "unicode": ""
+  },
+  {
+    "font_class": "navigate-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "notification",
+    "unicode": ""
+  },
+  {
+    "font_class": "notification-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "paperclip",
+    "unicode": ""
+  },
+  {
+    "font_class": "paperplane",
+    "unicode": ""
+  },
+  {
+    "font_class": "paperplane-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "person",
+    "unicode": ""
+  },
+  {
+    "font_class": "person-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "personadd",
+    "unicode": ""
+  },
+  {
+    "font_class": "personadd-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "personadd-filled-copy",
+    "unicode": ""
+  },
+  {
+    "font_class": "phone",
+    "unicode": ""
+  },
+  {
+    "font_class": "phone-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "plus",
+    "unicode": ""
+  },
+  {
+    "font_class": "plus-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "plusempty",
+    "unicode": ""
+  },
+  {
+    "font_class": "pulldown",
+    "unicode": ""
+  },
+  {
+    "font_class": "pyq",
+    "unicode": ""
+  },
+  {
+    "font_class": "qq",
+    "unicode": ""
+  },
+  {
+    "font_class": "redo",
+    "unicode": ""
+  },
+  {
+    "font_class": "redo-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "refresh",
+    "unicode": ""
+  },
+  {
+    "font_class": "refresh-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "refreshempty",
+    "unicode": ""
+  },
+  {
+    "font_class": "reload",
+    "unicode": ""
+  },
+  {
+    "font_class": "right",
+    "unicode": ""
+  },
+  {
+    "font_class": "scan",
+    "unicode": ""
+  },
+  {
+    "font_class": "search",
+    "unicode": ""
+  },
+  {
+    "font_class": "settings",
+    "unicode": ""
+  },
+  {
+    "font_class": "settings-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "shop",
+    "unicode": ""
+  },
+  {
+    "font_class": "shop-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "smallcircle",
+    "unicode": ""
+  },
+  {
+    "font_class": "smallcircle-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "sound",
+    "unicode": ""
+  },
+  {
+    "font_class": "sound-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "spinner-cycle",
+    "unicode": ""
+  },
+  {
+    "font_class": "staff",
+    "unicode": ""
+  },
+  {
+    "font_class": "staff-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "star",
+    "unicode": ""
+  },
+  {
+    "font_class": "star-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "starhalf",
+    "unicode": ""
+  },
+  {
+    "font_class": "trash",
+    "unicode": ""
+  },
+  {
+    "font_class": "trash-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "tune",
+    "unicode": ""
+  },
+  {
+    "font_class": "tune-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "undo",
+    "unicode": ""
+  },
+  {
+    "font_class": "undo-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "up",
+    "unicode": ""
+  },
+  {
+    "font_class": "top",
+    "unicode": ""
+  },
+  {
+    "font_class": "upload",
+    "unicode": ""
+  },
+  {
+    "font_class": "upload-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "videocam",
+    "unicode": ""
+  },
+  {
+    "font_class": "videocam-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "vip",
+    "unicode": ""
+  },
+  {
+    "font_class": "vip-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "wallet",
+    "unicode": ""
+  },
+  {
+    "font_class": "wallet-filled",
+    "unicode": ""
+  },
+  {
+    "font_class": "weibo",
+    "unicode": ""
+  },
+  {
+    "font_class": "weixin",
+    "unicode": ""
+  }
+];
+exports.Calendar = Calendar;
 exports._export_sfc = _export_sfc;
+exports.checkDate = checkDate;
 exports.createAnimation = createAnimation;
 exports.createSSRApp = createSSRApp;
+exports.dateCompare = dateCompare;
 exports.e = e;
 exports.f = f;
+exports.fixIosDateFormat = fixIosDateFormat;
+exports.fontData = fontData;
+exports.getDate = getDate;
+exports.getDateTime = getDateTime;
+exports.getDefaultSecond = getDefaultSecond;
+exports.getTime = getTime;
+exports.i18nMessages = i18nMessages;
 exports.index = index;
 exports.initVueI18n = initVueI18n;
 exports.messages = messages;

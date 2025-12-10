@@ -1,1 +1,1 @@
-<view class="back-icon data-v-0753b758" bindtap="{{b}}" style="{{'width:' + c + ';' + ('height:' + d)}}"><image class="back-img data-v-0753b758" src="{{a}}" mode="aspectFit" style="{{'width:' + '80%' + ';' + ('height:' + '80%')}}"></image></view>
+<view class="back-icon data-v-0753b758" bindtap="{{b}}" style="{{'width:' + c + ';' + ('height:' + d)}}"><image S class="back-img data-v-0753b758" src="{{a}}" mode="aspectFit" style="{{'width:' + '80%' + ';' + ('height:' + '80%')}}"></image></view>

@@ -6,7 +6,8 @@
 
 /* --- 顶部导航栏 (与 friendList 样式保持一致) --- */
 .header.data-v-dc2f9b9f {
-  height: 90rpx;
+  height: 120rpx;
+  line-height: 120rpx;
   display: flex;
   align-items: center;
   position: relative;
@@ -19,13 +20,14 @@
   position: absolute;
   left: 30rpx;
   font-size: 40rpx;
+  top: 55rpx;
   cursor: pointer;
 }
 .page-title.data-v-dc2f9b9f {
-  flex: 1;
+  flex: 1; 
   text-align: center;
   font-size: 38rpx;
-  margin-right: 60rpx;
+  font-weight: bold;
 }
 
 /* --- 设置列表 --- */

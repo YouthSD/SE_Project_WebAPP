@@ -6,7 +6,7 @@ const _sfc_main = {
       primaryColor: "#00CC99",
       accentColor: "#FFD700",
       postId: null,
-      scrollIntoView: "",
+      scrollIntoView: "详情",
       activeSection: "content",
       // 初始状态：正文
       contentTop: 0,

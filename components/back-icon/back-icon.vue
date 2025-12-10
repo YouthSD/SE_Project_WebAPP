@@ -9,7 +9,7 @@
     }"
   >
     <!-- 移除 :style 中的 // 注释，修复标签闭合 -->
-    <image 
+    <image S
       class="back-img"
       src="/static/back.png"  
       mode="aspectFit"

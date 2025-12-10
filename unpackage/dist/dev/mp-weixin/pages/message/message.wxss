@@ -8,11 +8,11 @@
 
 /* --- 顶部导航栏 --- */
 .header.data-v-4c1b26cf {
-  height: 90rpx;
-  line-height: 90rpx;
+  height: 120rpx;
+  line-height: 120rpx;
   text-align: center;
   color: #ffffff;
-  font-size: 38rpx;
+  font-size: 42rpx;
   font-weight: bold;
   padding-top: var(--status-bar-height);
   z-index: 10;

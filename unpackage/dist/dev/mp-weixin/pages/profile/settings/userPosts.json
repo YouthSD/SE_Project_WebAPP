@@ -2,6 +2,7 @@
   "navigationStyle": "custom",
   "navigationBarTitleText": "我的动态",
   "usingComponents": {
-    "back-icon": "../../../components/back-icon/back-icon"
+    "back-icon": "../../../components/back-icon/back-icon",
+    "uni-datetime-picker": "../../../node-modules/@dcloudio/uni-ui/lib/uni-datetime-picker/uni-datetime-picker"
   }
 }

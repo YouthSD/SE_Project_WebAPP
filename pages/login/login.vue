@@ -1,7 +1,6 @@
 <template>
   <view class="container">
     <view class="header">
-      <text class="back-btn" @click="goBack">返回</text>
       <text class="page-title">账号登录</text>
     </view>
 
@@ -150,8 +149,7 @@ export default {
       */
       
       // ** 前端逻辑判断 (临时) **
-      // 约定: 假设测试账号 'admin' 和密码 '123456' 登录成功
-      if (this.username === 'admin' && this.password === '123456') {
+      if (this.username === '1' && this.password === '123456') {
         uni.showToast({ title: '登录成功', icon: 'success' });
         // ** 跳转到程序首页 (这里假设首页为 home.vue) **
         uni.switchTab({
@@ -218,7 +216,7 @@ export default {
 }
 
 .input-field {
-  width: 100%;
+  width: 90%;
   height: 90rpx;
   padding: 0 20rpx;
   border: 1rpx solid #e0e0e0;

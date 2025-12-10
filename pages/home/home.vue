@@ -136,11 +136,11 @@ export default {
 
 /* --- 顶部标题 --- */
 .header {
-  height: 90rpx;
-  line-height: 90rpx;
+  height: 120rpx;
+  line-height: 120rpx;
   text-align: center;
   color: #ffffff;
-  font-size: 38rpx;
+  font-size: 42rpx;
   font-weight: bold;
   padding-top: var(--status-bar-height); /* 适配刘海屏 */
   z-index: 10;

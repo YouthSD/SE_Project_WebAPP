@@ -132,36 +132,35 @@ const _sfc_main = {
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
-    a: common_vendor.o((...args) => $options.goBack && $options.goBack(...args)),
-    b: common_vendor.o([($event) => $data.username = $event.detail.value, (...args) => $options.validateUsername && $options.validateUsername(...args)]),
-    c: $data.username,
-    d: $data.usernameError
+    a: common_vendor.o([($event) => $data.username = $event.detail.value, (...args) => $options.validateUsername && $options.validateUsername(...args)]),
+    b: $data.username,
+    c: $data.usernameError
   }, $data.usernameError ? {
-    e: common_vendor.t($data.usernameError)
+    d: common_vendor.t($data.usernameError)
   } : {}, {
-    f: common_vendor.o([($event) => $data.nickname = $event.detail.value, (...args) => $options.validateNickname && $options.validateNickname(...args)]),
-    g: $data.nickname,
-    h: $data.nicknameError
+    e: common_vendor.o([($event) => $data.nickname = $event.detail.value, (...args) => $options.validateNickname && $options.validateNickname(...args)]),
+    f: $data.nickname,
+    g: $data.nicknameError
   }, $data.nicknameError ? {
-    i: common_vendor.t($data.nicknameError)
+    h: common_vendor.t($data.nicknameError)
   } : {}, {
-    j: common_vendor.o([($event) => $data.password = $event.detail.value, (...args) => $options.validatePassword && $options.validatePassword(...args)]),
-    k: $data.password,
-    l: $data.passwordError
+    i: common_vendor.o([($event) => $data.password = $event.detail.value, (...args) => $options.validatePassword && $options.validatePassword(...args)]),
+    j: $data.password,
+    k: $data.passwordError
   }, $data.passwordError ? {
-    m: common_vendor.t($data.passwordError)
+    l: common_vendor.t($data.passwordError)
   } : {}, {
-    n: common_vendor.t($options.passwordStrength),
-    o: $options.strengthColor,
-    p: common_vendor.o([($event) => $data.confirmPassword = $event.detail.value, (...args) => $options.validateConfirmPassword && $options.validateConfirmPassword(...args)]),
-    q: $data.confirmPassword,
-    r: $data.confirmPasswordError
+    m: common_vendor.t($options.passwordStrength),
+    n: $options.strengthColor,
+    o: common_vendor.o([($event) => $data.confirmPassword = $event.detail.value, (...args) => $options.validateConfirmPassword && $options.validateConfirmPassword(...args)]),
+    p: $data.confirmPassword,
+    q: $data.confirmPasswordError
   }, $data.confirmPasswordError ? {
-    s: common_vendor.t($data.confirmPasswordError)
+    r: common_vendor.t($data.confirmPasswordError)
   } : {}, {
-    t: $data.primaryColor,
-    v: !$options.isFormValid,
-    w: common_vendor.o((...args) => $options.handleRegister && $options.handleRegister(...args))
+    s: $data.primaryColor,
+    t: !$options.isFormValid,
+    v: common_vendor.o((...args) => $options.handleRegister && $options.handleRegister(...args))
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-bac4a35d"]]);

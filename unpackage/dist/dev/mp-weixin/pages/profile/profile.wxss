@@ -8,7 +8,7 @@
 
 /* --- 顶部导航栏 --- */
 .header.data-v-dd383ca2 {
-  height: 90rpx;
+  height: 120rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +19,7 @@
   z-index: 10;
 }
 .page-title.data-v-dd383ca2 {
-  font-size: 38rpx;
+  font-size: 42rpx;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

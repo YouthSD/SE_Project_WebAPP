@@ -56,8 +56,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 50rpx 40rpx;
-  min-height: 100vh;
+  padding: 50rpx 40rpx; 
   background-color: #f7fff7; /* 轻微的主题色背景 */
 }
 
@@ -67,7 +66,7 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-top: 150rpx;
-  flex-grow: 1; /* 占据更多空间，让按钮偏下 */
+  margin-bottom: 80rpx;
 }
 
 .main-logo {
@@ -87,7 +86,7 @@ export default {
 /* --- 按钮区域 --- */
 .button-area {
   width: 100%;
-  margin-bottom: 80rpx;
+  margin-bottom: 0rpx;
 }
 
 .login-btn {

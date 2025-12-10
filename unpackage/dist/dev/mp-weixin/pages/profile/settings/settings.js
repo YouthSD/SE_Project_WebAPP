@@ -66,7 +66,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.o($options.goBack),
     b: common_vendor.p({
-      iconSize: "50"
+      ["icon-size"]: "50"
     }),
     c: $data.primaryColor,
     d: common_vendor.o(($event) => $options.goToPage("profileSettings")),

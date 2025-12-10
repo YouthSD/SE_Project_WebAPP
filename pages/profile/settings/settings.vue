@@ -1,7 +1,7 @@
 <template>
   <view class="container">
     <view class="header" :style="{ backgroundColor: primaryColor }">
-      <back-icon iconSize="50" @click="goBack" class="back-icon"></back-icon>
+      <back-icon icon-size="50" @click="goBack" class="back-icon"></back-icon>
       <text class="page-title">设置</text>
     </view>
 
@@ -94,7 +94,8 @@ export default {
 
 /* --- 顶部导航栏 (与 friendList 样式保持一致) --- */
 .header {
-  height: 90rpx;
+  height: 120rpx;
+  line-height: 120rpx;
   display: flex;
   align-items: center;
   position: relative;
@@ -108,14 +109,15 @@ export default {
   position: absolute;
   left: 30rpx;
   font-size: 40rpx;
+  top: 55rpx;
   cursor: pointer;
 }
 
 .page-title {
-  flex: 1;
+  flex: 1; 
   text-align: center;
   font-size: 38rpx;
-  margin-right: 60rpx;
+  font-weight: bold;
 }
 
 /* --- 设置列表 --- */

@@ -5,21 +5,25 @@ const _sfc_main = {
     return {
       primaryColor: "#00CC99",
       searchKeyword: "",
+      // 日期相关数据
+      rangeValues: [],
+      // 绑定给 picker 的数组，例如 ['2023-01-01', '2023-01-02']
       startDate: null,
+      // 发送给后端的开始日期
       endDate: null,
-      showDatePicker: false,
+      // 发送给后端的结束日期
       // 模拟用户动态数据
       posts: [
-        { id: 1, title: "空悲切", rating: 4.8, date: "2023-12-09", images: ["/static/img1.jpg"] },
-        { id: 2, title: "今日份美食分享", rating: 4.5, date: "2025-12-08", images: ["/static/food1.jpg"] },
-        { id: 3, title: "关于uni-app的一些心得", rating: 3.9, date: "2025-12-07", images: [] }
+        { id: 1, title: "春天种的植物发芽了", rating: 4.8, date: "2025-12-09", images: ["/static/img1.jpg"], tags: ["植物", "生活", "记录"] },
+        { id: 3, title: "空悲切", rating: 3.9, date: "2023-04-09", images: [""], tags: ["心情", "随笔"] }
       ]
     };
   },
   computed: {
+    // 动态显示选择的日期范围文字
     dateRangeText() {
-      if (this.startDate && this.endDate) {
-        return `${this.startDate} 至 ${this.endDate}`;
+      if (this.rangeValues && this.rangeValues.length === 2) {
+        return `${this.rangeValues[0]} 至 ${this.rangeValues[1]}`;
       }
       return "选择日期范围";
     }
@@ -31,23 +35,33 @@ const _sfc_main = {
     goBack() {
       common_vendor.index.navigateBack();
     },
-    // 模拟日期选择器确认 (需要实际组件支持)
-    handleDateConfirm(e) {
-      this.startDate = e.range[0];
-      this.endDate = e.range[1];
-      this.showDatePicker = false;
+    // 日期选择器回调
+    onDateChange(e) {
+      common_vendor.index.__f__("log", "at pages/profile/settings/userPosts.vue:112", "选择的日期:", e);
+      if (e && e.length > 0) {
+        this.rangeValues = e;
+        this.startDate = e[0];
+        this.endDate = e[1];
+      } else {
+        this.rangeValues = [];
+        this.startDate = null;
+        this.endDate = null;
+      }
     },
-    // 模拟获取用户帖子列表
+    // 获取用户帖子列表
     fetchUserPosts() {
-      common_vendor.index.showToast({ title: "开始检索/筛选", icon: "none" });
+      common_vendor.index.__f__("log", "at pages/profile/settings/userPosts.vue:130", "检索条件:", {
+        keyword: this.searchKeyword,
+        start: this.startDate,
+        end: this.endDate
+      });
+      common_vendor.index.showToast({ title: "检索中...", icon: "none" });
     },
-    // 跳转到帖子详情/修改页
     goToDetail(postId) {
       common_vendor.index.navigateTo({
-        url: `postDetail?id=${postId}&edit=true`
+        url: `/pages/home/postDetail?id=${postId}&edit=true`
       });
     },
-    // 二次确认删除
     confirmDelete(post) {
       common_vendor.index.showModal({
         title: "删除确认",
@@ -61,7 +75,6 @@ const _sfc_main = {
         }
       });
     },
-    // 执行删除操作
     deletePost(post) {
       common_vendor.index.showToast({ title: "删除成功", icon: "success" });
       this.posts = this.posts.filter((p) => p.id !== post.id);
@@ -80,45 +93,60 @@ _sfc_main.setup = __setup__ ? (props, ctx) => {
 } : __injectCSSVars__;
 if (!Array) {
   const _easycom_back_icon2 = common_vendor.resolveComponent("back-icon");
-  _easycom_back_icon2();
+  const _easycom_uni_datetime_picker2 = common_vendor.resolveComponent("uni-datetime-picker");
+  (_easycom_back_icon2 + _easycom_uni_datetime_picker2)();
 }
 const _easycom_back_icon = () => "../../../components/back-icon/back-icon.js";
+const _easycom_uni_datetime_picker = () => "../../../node-modules/@dcloudio/uni-ui/lib/uni-datetime-picker/uni-datetime-picker.js";
 if (!Math) {
-  _easycom_back_icon();
+  (_easycom_back_icon + _easycom_uni_datetime_picker)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.o($options.goBack),
     b: common_vendor.p({
-      iconSize: "50"
+      ["icon-size"]: "50"
     }),
     c: $data.primaryColor,
     d: common_vendor.o((...args) => $options.fetchUserPosts && $options.fetchUserPosts(...args)),
     e: $data.searchKeyword,
     f: common_vendor.o(($event) => $data.searchKeyword = $event.detail.value),
     g: common_vendor.t($options.dateRangeText),
-    h: common_vendor.o(($event) => $data.showDatePicker = true),
-    i: $data.primaryColor,
-    j: common_vendor.o((...args) => $options.fetchUserPosts && $options.fetchUserPosts(...args)),
-    k: $data.posts.length === 0
+    h: common_vendor.o($options.onDateChange),
+    i: common_vendor.o(($event) => $data.rangeValues = $event),
+    j: common_vendor.p({
+      type: "daterange",
+      border: false,
+      ["clear-icon"]: false,
+      modelValue: $data.rangeValues
+    }),
+    k: $data.primaryColor,
+    l: common_vendor.o((...args) => $options.fetchUserPosts && $options.fetchUserPosts(...args)),
+    m: $data.posts.length === 0
   }, $data.posts.length === 0 ? {} : {}, {
-    l: common_vendor.f($data.posts, (post, k0, i0) => {
+    n: common_vendor.f($data.posts, (post, k0, i0) => {
       return common_vendor.e({
         a: common_vendor.t(post.title),
         b: common_vendor.t(post.rating.toFixed(1)),
-        c: common_vendor.o(($event) => $options.goToDetail(post.id), post.id),
-        d: common_vendor.o(($event) => $options.confirmDelete(post), post.id),
-        e: post.images.length > 0
+        c: common_vendor.f(post.tags, (tag, index, i1) => {
+          return {
+            a: common_vendor.t(tag),
+            b: index
+          };
+        }),
+        d: common_vendor.o(($event) => $options.goToDetail(post.id), post.id),
+        e: common_vendor.o(($event) => $options.confirmDelete(post), post.id),
+        f: post.images.length > 0
       }, post.images.length > 0 ? {
-        f: common_vendor.t(post.date)
-      } : {
         g: common_vendor.t(post.date)
+      } : {
+        h: common_vendor.t(post.date)
       }, {
-        h: common_vendor.o(($event) => $options.goToDetail(post.id), post.id),
-        i: post.id
+        i: common_vendor.o(($event) => $options.goToDetail(post.id), post.id),
+        j: post.id
       });
     }),
-    m: common_vendor.s(_ctx.__cssVars())
+    o: common_vendor.s(_ctx.__cssVars())
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-0aa305fc"]]);
