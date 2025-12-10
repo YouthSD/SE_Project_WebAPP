@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "我的评论",
+  "usingComponents": {
+    "back-icon": "../../../components/back-icon/back-icon"
+  }
+}

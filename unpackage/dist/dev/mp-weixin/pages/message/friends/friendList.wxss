@@ -1,0 +1,113 @@
+
+.container.data-v-4d00fae9 {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f7fff7;
+}
+
+/* --- 顶部导航栏 --- */
+.header.data-v-4d00fae9 {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #ffffff;
+  font-weight: bold;
+  padding-top: var(--status-bar-height);
+}
+.back-icon.data-v-4d00fae9 {
+  position: absolute;
+  left: 30rpx;
+  font-size: 40rpx;
+  cursor: pointer;
+}
+.page-title.data-v-4d00fae9 {
+  flex: 1;
+  text-align: center;
+  font-size: 38rpx;
+  margin-right: 60rpx;
+}
+
+/* --- 搜索框 --- */
+.search-box.data-v-4d00fae9 {
+  padding: 20rpx 30rpx;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+.search-input.data-v-4d00fae9 {
+  flex: 1;
+  height: 70rpx;
+  background-color: #f7f7f7;
+  border-radius: 35rpx;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+.search-icon.data-v-4d00fae9 {
+  font-size: 40rpx;
+  color: #999;
+}
+
+/* --- 好友列表 --- */
+.friend-list.data-v-4d00fae9 {
+  flex: 1;
+  background-color: #ffffff;
+}
+.no-friend.data-v-4d00fae9 {
+  text-align: center;
+  padding: 50rpx;
+  color: #999;
+}
+.friend-item.data-v-4d00fae9 {
+  display: flex;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  align-items: center;
+}
+.avatar.data-v-4d00fae9 {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.friend-info.data-v-4d00fae9 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.friend-nickname.data-v-4d00fae9 {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+.friend-username.data-v-4d00fae9 {
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 5rpx;
+}
+
+/* --- 分页器 (与 postDetail 样式保持一致) --- */
+.pagination.data-v-4d00fae9 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx 0;
+}
+.page-btn.data-v-4d00fae9 {
+  font-size: 30rpx;
+  color: #fff;
+  background-color: var(--58edffd4);
+  padding: 10rpx 25rpx;
+  border-radius: 30rpx;
+  margin: 0 20rpx;
+}
+.page-btn.disabled.data-v-4d00fae9 {
+  background-color: #ccc;
+}
+.page-info.data-v-4d00fae9 {
+  font-size: 28rpx;
+  color: #666;
+}

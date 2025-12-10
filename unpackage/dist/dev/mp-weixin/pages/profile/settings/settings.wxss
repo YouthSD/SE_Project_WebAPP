@@ -1,0 +1,56 @@
+
+.container.data-v-dc2f9b9f {
+  height: 100vh;
+  background-color: #f7fff7;
+}
+
+/* --- 顶部导航栏 (与 friendList 样式保持一致) --- */
+.header.data-v-dc2f9b9f {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #ffffff;
+  font-weight: bold;
+  padding-top: var(--status-bar-height);
+  background-color: var(--615f6000);
+}
+.back-icon.data-v-dc2f9b9f {
+  position: absolute;
+  left: 30rpx;
+  font-size: 40rpx;
+  cursor: pointer;
+}
+.page-title.data-v-dc2f9b9f {
+  flex: 1;
+  text-align: center;
+  font-size: 38rpx;
+  margin-right: 60rpx;
+}
+
+/* --- 设置列表 --- */
+.settings-list.data-v-dc2f9b9f {
+  background-color: #ffffff;
+  margin-top: 20rpx;
+}
+.setting-item.data-v-dc2f9b9f {
+  display: flex;
+  align-items: center;
+  padding: 25rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.setting-item.data-v-dc2f9b9f:last-child {
+  border-bottom: none;
+}
+.name.data-v-dc2f9b9f {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333;
+}
+.arrow.data-v-dc2f9b9f {
+  font-size: 30rpx;
+  color: #ccc;
+}
+.setting-item.danger .name.data-v-dc2f9b9f {
+  color: #ff3b30; /* 危险操作使用红色 */
+}

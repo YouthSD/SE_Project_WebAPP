@@ -1,0 +1,80 @@
+
+.container.data-v-d955d4b4 {
+  height: 100vh;
+  background-color: #f7fff7;
+}
+
+/* --- 顶部导航栏 (与 settings 样式保持一致) --- */
+.header.data-v-d955d4b4 {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #ffffff;
+  font-weight: bold;
+  padding-top: var(--status-bar-height);
+  background-color: var(--438fa08e);
+}
+.back-icon.data-v-d955d4b4 {
+  position: absolute;
+  left: 30rpx;
+  font-size: 40rpx;
+  cursor: pointer;
+}
+.page-title.data-v-d955d4b4 {
+  flex: 1;
+  text-align: center;
+  font-size: 38rpx;
+  margin-left: 60rpx; /* 留出返回按钮的空间 */
+}
+.save-btn.data-v-d955d4b4 {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  color: #fff;
+  padding: 0 25rpx;
+  border-radius: 30rpx;
+  margin-right: 20rpx;
+}
+
+/* --- 表单区 --- */
+.form-section.data-v-d955d4b4 {
+  background-color: #ffffff;
+  margin-top: 20rpx;
+}
+.form-item.data-v-d955d4b4 {
+  display: flex;
+  align-items: center;
+  padding: 25rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.label.data-v-d955d4b4 {
+  width: 150rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+.input-field.data-v-d955d4b4 {
+  flex: 1;
+  font-size: 32rpx;
+  text-align: right;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.disabled-field.data-v-d955d4b4 {
+  color: #999;
+}
+.arrow.data-v-d955d4b4 {
+  font-size: 30rpx;
+  color: #ccc;
+  margin-left: 15rpx;
+}
+.avatar-item.data-v-d955d4b4 {
+  height: 150rpx;
+}
+.avatar-preview.data-v-d955d4b4 {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 15rpx;
+  border: 1rpx solid #eee;
+}

@@ -1,0 +1,161 @@
+{
+	"easycom": {
+	    // 确保 uni-ui 的规则在这里
+	    "autoscan": true,
+	    "custom": {
+	      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+	    }
+	},
+  "pages": [
+	{
+	  	"path": "pages/index/index",
+	  	"style": {
+	  		"navigationBarTitleText": "应用首页"
+	  	}
+	},
+	// 【登录页】
+	{
+	  	"path": "pages/login/login",
+	  	"style": {
+	  		"navigationBarTitleText": "用户登录"
+	  	}
+	},
+	// 【注册页】
+	{
+	  	"path": "pages/register/register",
+	  	"style": {
+	  		"navigationBarTitleText": "用户注册"
+	  	}
+	},
+      {
+        "path": "pages/home/home",
+        "style": {
+          "navigationStyle": "custom",
+          "enablePullDownRefresh": true
+        }
+      },
+      {
+        "path": "pages/publish/publish",
+        "style": {
+          "navigationStyle": "custom"
+        }
+      },
+      {
+        "path": "pages/message/message", // 消息主 Tab 页面
+        "style": {
+          "navigationStyle": "custom"
+        }
+      },
+      {
+        "path": "pages/profile/profile", // 我的主 Tab 页面
+        "style": {
+          "navigationStyle": "custom"
+        }
+      },
+	  {
+		"path": "pages/home/postDetail", 
+		"style": {
+		     "navigationBarTitleText": "帖子详情"
+		  // 如果详情页使用自定义导航栏，这里应为 "navigationStyle": "custom"
+		 }
+		}
+    ],
+    
+    "subPackages": [
+      // --- 消息模块子页面 (新的 root 路径：pages/message/friends) ---
+      {
+        "root": "pages/message/friends", // ⚠️ 调整分包根目录，排除 Tab 页面
+        "pages": [
+          {
+            "path": "friendList",
+            "style": {
+              "navigationStyle": "custom",
+              "navigationBarTitleText": "我的好友"
+            }
+          },
+          {
+            "path": "addFriend",
+            "style": {
+              "navigationStyle": "custom",
+              "navigationBarTitleText": "添加好友"
+            }
+          },
+          {
+            "path": "friendRequests",
+            "style": {
+              "navigationStyle": "custom",
+              "navigationBarTitleText": "好友请求"
+            }
+          }
+        ]
+      },
+      // --- 我的模块子页面 (新的 root 路径：pages/profile/settings) ---
+      {
+        "root": "pages/profile/settings", // ⚠️ 调整分包根目录，排除 Tab 页面
+        "pages": [
+          {
+            "path": "settings",
+            "style": {
+              "navigationStyle": "custom",
+              "navigationBarTitleText": "设置"
+            }
+          },
+          {
+            "path": "profileSettings",
+            "style": {
+              "navigationStyle": "custom",
+              "navigationBarTitleText": "设置个人资料"
+            }
+          },
+          {
+            "path": "userPosts",
+            "style": {
+              "navigationStyle": "custom",
+              "navigationBarTitleText": "我的动态"
+            }
+          },
+          {
+            "path": "userComments",
+            "style": {
+              "navigationStyle": "custom",
+              "navigationBarTitleText": "我的评论"
+            }
+          }
+        ]
+      }
+    ],
+    
+    "globalStyle": {
+      "navigationBarTextStyle": "white",
+      "navigationBarTitleText": "小绿书",
+      "navigationBarBackgroundColor": "#00CC99",
+      "backgroundColor": "#F8F8F8",
+      "navigationStyle": "default"
+    },
+    
+    "tabBar": {
+      // ... Tab Bar 配置保持不变 ...
+      "color": "#888888",
+      "selectedColor": "#00CC99",
+      "backgroundColor": "#FFFFFF",
+      "borderStyle": "white",
+      "list": [
+        {
+          "pagePath": "pages/home/home", "iconPath": "static/tabbar/home.png", "selectedIconPath": "static/tabbar/home.png", 
+		  "text": "首页"
+        },
+        {
+          "pagePath": "pages/publish/publish", "iconPath": "static/tabbar/publish.png", "selectedIconPath": "static/tabbar/publish.png", 
+		  "text": "发布"
+        },
+        {
+          "pagePath": "pages/message/message", "iconPath": "static/tabbar/message.png", "selectedIconPath": "static/tabbar/message.png", 
+		  "text": "消息"
+        },
+        {
+          "pagePath": "pages/profile/profile", "iconPath": "static/tabbar/profile.png", "selectedIconPath": "static/tabbar/profile.png", 
+		  "text": "我的"
+        }
+      ]
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "好友请求",
+  "usingComponents": {
+    "back-icon": "../../../components/back-icon/back-icon"
+  }
+}

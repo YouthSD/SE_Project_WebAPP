@@ -1,0 +1,107 @@
+
+.container.data-v-dc2a5c7c {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f7fff7;
+}
+
+/* --- 顶部导航栏 (与 friendList 样式保持一致) --- */
+.header.data-v-dc2a5c7c {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #ffffff;
+  font-weight: bold;
+  padding-top: var(--status-bar-height);
+  background-color: var(--ff637402);
+}
+.back-icon.data-v-dc2a5c7c {
+  position: absolute;
+  left: 30rpx;
+  font-size: 40rpx;
+  cursor: pointer;
+}
+.page-title.data-v-dc2a5c7c {
+  flex: 1;
+  text-align: center;
+  font-size: 38rpx;
+  margin-right: 60rpx;
+}
+
+/* --- 搜索框 --- */
+.search-box.data-v-dc2a5c7c {
+  padding: 20rpx 30rpx;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+.search-input.data-v-dc2a5c7c {
+  flex: 1;
+  height: 70rpx;
+  background-color: #f7f7f7;
+  border-radius: 35rpx;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+.search-btn.data-v-dc2a5c7c {
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  color: #fff;
+  padding: 0 30rpx;
+  border-radius: 35rpx;
+  white-space: nowrap;
+}
+
+/* --- 搜索结果区 --- */
+.result-list.data-v-dc2a5c7c {
+  flex: 1;
+  padding: 20rpx 30rpx;
+}
+.status-msg.data-v-dc2a5c7c {
+  text-align: center;
+  padding: 50rpx;
+  color: #999;
+}
+.user-item.data-v-dc2a5c7c {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.avatar.data-v-dc2a5c7c {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.user-info.data-v-dc2a5c7c {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.user-nickname.data-v-dc2a5c7c {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+.user-username.data-v-dc2a5c7c {
+  font-size: 26rpx;
+  color: #999;
+  margin-top: 5rpx;
+}
+.add-btn.data-v-dc2a5c7c {
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  color: #fff;
+  padding: 0 20rpx;
+  border-radius: 35rpx;
+}
+.add-btn[disabled].data-v-dc2a5c7c {
+  background-color: #ccc !important;
+}

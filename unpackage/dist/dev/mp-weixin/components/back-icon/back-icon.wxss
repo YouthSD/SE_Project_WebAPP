@@ -1,0 +1,16 @@
+
+.back-icon.data-v-0753b758 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* 圆形容器 */
+  cursor: pointer;
+  /* 可选背景和阴影 */
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+.back-img.data-v-0753b758 {
+  display: block;
+  background: none;
+  object-fit: contain;
+}

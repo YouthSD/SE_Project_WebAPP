@@ -1,0 +1,206 @@
+
+.container.data-v-bfce3555 {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f7fff7;
+}
+
+/* --- 顶部导航栏 --- */
+.header.data-v-bfce3555 {
+  height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  background-color: #ffffff;
+  border-bottom: 1rpx solid #eee;
+  padding-top: var(--status-bar-height); /* 适配刘海屏 */
+}
+.cancel-btn.data-v-bfce3555 {
+  font-size: 32rpx;
+  color: #888;
+}
+.page-title.data-v-bfce3555 {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+.publish-btn.data-v-bfce3555 {
+  font-size: 28rpx;
+  color: #ffffff;
+  padding: 0 25rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  margin: 0;
+  white-space: nowrap;
+}
+.publish-btn[disabled].data-v-bfce3555 {
+  background-color: #ccc !important;
+}
+
+/* --- 内容滚动区 --- */
+.content-scroll.data-v-bfce3555 {
+  flex: 1;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.title-input.data-v-bfce3555 {
+  width: 100%;
+  height: 80rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  border-bottom: 1rpx solid #eee;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+}
+.text-textarea.data-v-bfce3555 {
+  width: 100%;
+  height: 300rpx;
+  font-size: 32rpx;
+  padding: 10rpx 0;
+  margin-bottom: 30rpx;
+}
+
+/* --- 媒体预览区 --- */
+.media-preview-area.data-v-bfce3555 {
+  margin-bottom: 30rpx;
+}
+.image-preview.data-v-bfce3555 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+.image-item.data-v-bfce3555, .add-media-btn.data-v-bfce3555 {
+  width: calc((100% - 40rpx) / 3); /* 每行3个，中间2个20rpx的间隙 */
+  height: 200rpx;
+  position: relative;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.uploaded-img.data-v-bfce3555, .uploaded-video.data-v-bfce3555 {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.video-preview.data-v-bfce3555 {
+  width: 100%;
+  height: 400rpx;
+  position: relative;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+.delete-icon.data-v-bfce3555 {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 36rpx;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 30rpx;
+  z-index: 10;
+}
+.add-media-btn.data-v-bfce3555 {
+  border: 2rpx dashed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+}
+.add-icon.data-v-bfce3555 {
+  font-size: 60rpx;
+  line-height: 1;
+}
+.add-text.data-v-bfce3555 {
+  font-size: 24rpx;
+  margin-top: 5rpx;
+}
+
+/* 进度条 */
+.progress-bar-container.data-v-bfce3555 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40rpx;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+}
+.progress-bar.data-v-bfce3555 {
+  height: 100%;
+  transition: width 0.3s;
+  position: absolute;
+  opacity: 0.8;
+}
+.progress-text.data-v-bfce3555 {
+  font-size: 24rpx;
+  color: #fff;
+  z-index: 5;
+  margin-left: 10rpx;
+}
+
+/* --- 标签输入区 --- */
+.tag-input-area.data-v-bfce3555 {
+  padding: 20rpx 0;
+}
+.tag-input.data-v-bfce3555 {
+  width: 100%;
+  height: 70rpx;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid #eee;
+  margin-bottom: 20rpx;
+}
+.tag-list.data-v-bfce3555 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tag-item.data-v-bfce3555 {
+  font-size: 26rpx;
+  padding: 8rpx 15rpx;
+  border: 1px solid;
+  border-radius: 20rpx;
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+  display: flex;
+  align-items: center;
+}
+.tag-delete.data-v-bfce3555 {
+  font-size: 24rpx;
+  margin-left: 10rpx;
+  font-weight: bold;
+}
+
+
+/* --- 底部功能栏 (媒体选择) --- */
+.media-action-bar.data-v-bfce3555 {
+  display: flex;
+  border-top: 1rpx solid #eee;
+  background-color: #fff;
+  padding: 10rpx 0;
+}
+.action-btn.data-v-bfce3555 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rpx 0;
+}
+.action-btn.disabled.data-v-bfce3555 {
+  opacity: 0.5;
+}
+.action-btn .icon.data-v-bfce3555 {
+  font-size: 40rpx;
+  margin-right: 10rpx;
+}
+.action-btn .text.data-v-bfce3555 {
+  font-size: 30rpx;
+  color: #333;
+}

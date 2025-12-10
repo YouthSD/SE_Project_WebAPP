@@ -1,0 +1,107 @@
+
+.container.data-v-4c1b26cf {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f0f8f0;
+}
+
+/* --- 顶部导航栏 --- */
+.header.data-v-4c1b26cf {
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #ffffff;
+  font-size: 38rpx;
+  font-weight: bold;
+  padding-top: var(--status-bar-height);
+  z-index: 10;
+}
+
+/* --- 核心功能按钮区 --- */
+.feature-buttons.data-v-4c1b26cf {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 0;
+  background-color: #ffffff;
+  border-bottom: 1rpx solid #eee;
+}
+.button-item.data-v-4c1b26cf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  position: relative;
+}
+.button-item .icon.data-v-4c1b26cf {
+  font-size: 50rpx;
+  margin-bottom: 10rpx;
+}
+.button-item .text.data-v-4c1b26cf {
+  font-size: 26rpx;
+  color: #333;
+}
+.badge.data-v-4c1b26cf {
+  position: absolute;
+  top: 0;
+  right: 15rpx;
+  min-width: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  border-radius: 15rpx;
+  color: #333;
+  font-size: 20rpx;
+  text-align: center;
+  padding: 0 5rpx;
+}
+
+/* --- 消息列表区 --- */
+.message-list.data-v-4c1b26cf {
+  flex: 1;
+}
+.no-message.data-v-4c1b26cf {
+  text-align: center;
+  padding: 50rpx;
+  color: #999;
+}
+.message-item.data-v-4c1b26cf {
+  display: flex;
+  padding: 20rpx 30rpx;
+  background-color: #ffffff;
+  border-bottom: 1rpx solid #eee;
+  align-items: center;
+}
+.avatar.data-v-4c1b26cf {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.message-content.data-v-4c1b26cf {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.info-line.data-v-4c1b26cf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5rpx;
+}
+.friend-name.data-v-4c1b26cf {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+.timestamp.data-v-4c1b26cf {
+  font-size: 24rpx;
+  color: #999;
+}
+.last-message.data-v-4c1b26cf {
+  font-size: 28rpx;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

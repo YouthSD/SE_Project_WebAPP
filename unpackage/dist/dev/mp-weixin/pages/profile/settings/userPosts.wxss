@@ -1,0 +1,166 @@
+
+.container.data-v-0aa305fc {
+  height: 100vh;
+  background-color: #f7fff7;
+}
+
+/* --- 顶部导航栏 (与 settings 样式保持一致) --- */
+.header.data-v-0aa305fc {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #ffffff;
+  font-weight: bold;
+  padding-top: var(--status-bar-height);
+  background-color: var(--5ace2ddc);
+}
+.back-icon.data-v-0aa305fc {
+  position: absolute;
+  left: 30rpx;
+  font-size: 40rpx;
+  cursor: pointer;
+}
+.page-title.data-v-0aa305fc {
+  flex: 1;
+  text-align: center;
+  font-size: 38rpx;
+  margin-right: 60rpx;
+}
+
+/* --- 搜索和筛选区 --- */
+.filter-bar.data-v-0aa305fc {
+  padding: 20rpx 30rpx;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+.search-input.data-v-0aa305fc {
+  flex: 2;
+  height: 70rpx;
+  background-color: #f7f7f7;
+  border-radius: 35rpx;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+.date-picker-box.data-v-0aa305fc {
+  flex: 1.5;
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #f7f7f7;
+  border-radius: 35rpx;
+  padding: 0 15rpx;
+  font-size: 26rpx;
+  color: #666;
+  margin-right: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-btn.data-v-0aa305fc {
+  flex: 1;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  color: #fff;
+  padding: 0;
+  border-radius: 35rpx;
+}
+
+/* --- 动态列表区 --- */
+.post-list.data-v-0aa305fc {
+    flex: 1;
+    padding: 20rpx 30rpx 20rpx 7rpx;
+}
+.no-post.data-v-0aa305fc {
+  text-align: center;
+  padding: 50rpx;
+  color: #999;
+}
+.post-item.data-v-0aa305fc {
+    display: block; 
+    padding: 20rpx; /* 统一左右 padding */
+    border-bottom: 1rpx solid #eee;
+    background-color: #fff;
+    margin-bottom: 15rpx;
+    border-radius: 10rpx;
+}
+.post-info-box.data-v-0aa305fc {
+    padding: 0;
+}
+.post-header.data-v-0aa305fc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rpx; /* 减少底部间距 */
+}
+.post-title.data-v-0aa305fc {
+    font-size: 32rpx;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    margin-right: 15rpx; /* 与评分保持距离 */
+}
+
+/* 评分：移到标题行右侧 */
+.post-rating.data-v-0aa305fc {
+    font-size: 28rpx;
+    color: #FF9900; /* 评分颜色突出 */
+    font-weight: bold;
+    /* 保持右侧定位 */
+}
+
+/* --- 底部操作和日期区域 --- */
+.post-footer.data-v-0aa305fc {
+    /* 确保操作和日期在标题下方 */
+    display: block;
+}
+
+/* 新增：操作按钮区域 */
+.post-actions.data-v-0aa305fc {
+    display: flex;
+    justify-content: flex-end; /* 右对齐按钮 */
+    margin-top: 15rpx;
+    margin-bottom: 15rpx; /* 按钮和日期之间留出空间 */
+}
+.action-btn.data-v-0aa305fc {
+    font-size: 28rpx;
+    color: #666;
+    padding: 5rpx 15rpx;
+    border: 1rpx solid #ccc;
+    border-radius: 20rpx;
+    margin-left: 15rpx; /* 按钮之间间距 */
+}
+.delete-btn.data-v-0aa305fc {
+    color: #FF3B30;
+    border-color: #FF3B30;
+}
+
+/* 日期样式统一，并确保靠右 */
+.post-date.data-v-0aa305fc, .post-date-full.data-v-0aa305fc {
+    font-size: 24rpx;
+    color: #999;
+    display: block;
+    text-align: right; /* 日期靠右显示 */
+    margin-top: 10rpx;
+}
+
+/* 移除不必要的样式 */
+.image-preview.data-v-0aa305fc {
+    /* 移除这里的 flex 布局，让图片和日期显示在不同行 */
+    display: block;
+    margin-bottom: 10rpx;
+}
+.preview-img.data-v-0aa305fc {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 10rpx;
+    /* 确保图片靠左 */
+    display: block;
+    margin-right: 0; 
+    margin-bottom: 10rpx;
+}

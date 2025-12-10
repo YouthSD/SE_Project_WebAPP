@@ -1,0 +1,111 @@
+
+.container.data-v-07e72d3c {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f7fff7; /* 轻微的主题色背景 */
+}
+
+/* --- 顶部标题 --- */
+.header.data-v-07e72d3c {
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #ffffff;
+  font-size: 38rpx;
+  font-weight: bold;
+  padding-top: var(--status-bar-height); /* 适配刘海屏 */
+  z-index: 10;
+}
+
+/* --- 帖子列表区 --- */
+.content-list.data-v-07e72d3c {
+  flex: 1;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+.date-header.data-v-07e72d3c {
+  padding: 0 30rpx 20rpx;
+}
+.date-text.data-v-07e72d3c {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 帖子卡片样式 */
+.post-card.data-v-07e72d3c {
+  margin: 0 30rpx 30rpx;
+  padding: 20rpx;
+  background-color: #ffffff;
+  border-radius: 15rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+}
+.post-info.data-v-07e72d3c {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.post-header.data-v-07e72d3c {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.post-title.data-v-07e72d3c {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+  margin-right: 20rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.post-rating.data-v-07e72d3c {
+  padding: 5rpx 15rpx;
+  border-radius: 20rpx;
+}
+.rating-score.data-v-07e72d3c {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333; /* 配合黄色背景，黑色文字更清晰 */
+}
+
+/* 图片预览 */
+.image-preview.data-v-07e72d3c {
+  display: flex;
+  overflow: hidden;
+  margin: 15rpx 0;
+}
+.preview-img.data-v-07e72d3c {
+  width: calc(33.33% - 10rpx); /* 三张图片等宽，留间距 */
+  height: 180rpx;
+  border-radius: 10rpx;
+  margin-right: 15rpx;
+}
+.preview-img.data-v-07e72d3c:last-child {
+  margin-right: 0;
+}
+
+
+/* 标签样式 */
+.post-tags.data-v-07e72d3c {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10rpx;
+}
+.tag-item.data-v-07e72d3c {
+  font-size: 24rpx;
+  padding: 5rpx 15rpx;
+  border: 1px solid;
+  border-radius: 20rpx;
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+}
+.no-content.data-v-07e72d3c {
+  text-align: center;
+  padding: 50rpx;
+  color: #999;
+}

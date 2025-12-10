@@ -1,0 +1,77 @@
+
+.container.data-v-bac4a35d {
+  padding: 40rpx;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* --- 头部和返回按钮 --- */
+.header.data-v-bac4a35d {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 80rpx;
+}
+.back-btn.data-v-bac4a35d {
+  position: absolute;
+  left: 0;
+  color: #666;
+  font-size: 32rpx;
+}
+.page-title.data-v-bac4a35d {
+  flex: 1;
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* --- 表单区域 --- */
+.form-area.data-v-bac4a35d {
+  margin-top: 50rpx;
+}
+.input-group.data-v-bac4a35d {
+  margin-bottom: 40rpx;
+}
+.label.data-v-bac4a35d {
+  display: block;
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+.input-field.data-v-bac4a35d {
+  width: 100%;
+  height: 90rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #e0e0e0;
+  border-radius: 15rpx;
+  font-size: 32rpx;
+  background-color: #f9f9f9;
+}
+.password-status.data-v-bac4a35d {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rpx;
+}
+.error-tip.data-v-bac4a35d {
+  color: #ff4d4f; /* 红色错误提示 */
+  font-size: 24rpx;
+}
+.strength-tip.data-v-bac4a35d {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+.register-btn.data-v-bac4a35d {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 36rpx;
+  color: #ffffff;
+  border-radius: 50rpx;
+  margin-top: 60rpx;
+  box-shadow: 0 5rpx 15rpx rgba(0, 204, 153, 0.4);
+}
+.register-btn[disabled].data-v-bac4a35d {
+  opacity: 0.6;
+}

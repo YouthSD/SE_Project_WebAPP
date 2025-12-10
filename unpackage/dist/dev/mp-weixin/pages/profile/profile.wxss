@@ -1,0 +1,124 @@
+
+.container.data-v-dd383ca2 {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f0f8f0;
+}
+
+/* --- 顶部导航栏 --- */
+.header.data-v-dd383ca2 {
+  height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 0 30rpx;
+  padding-top: var(--status-bar-height);
+  z-index: 10;
+}
+.page-title.data-v-dd383ca2 {
+  font-size: 38rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.setting-btn.data-v-dd383ca2 {
+  font-size: 45rpx;
+}
+
+/* --- 用户核心信息卡片 --- */
+.user-card.data-v-dd383ca2 {
+  background-color: #ffffff;
+  padding: 40rpx 30rpx;
+  margin-bottom: 20rpx;
+}
+.user-info-main.data-v-dd383ca2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.avatar.data-v-dd383ca2 {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+  border: 4rpx solid #eee;
+}
+.text-info.data-v-dd383ca2 {
+  display: flex;
+  flex-direction: column;
+}
+.username.data-v-dd383ca2 {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 5rpx;
+}
+.nickname-box.data-v-dd383ca2 {
+  display: flex;
+  align-items: center;
+}
+.nickname.data-v-dd383ca2 {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #333;
+  margin-right: 15rpx;
+}
+.edit-icon.data-v-dd383ca2 {
+  font-size: 30rpx;
+  color: var(--68fdd546);
+}
+.stats-bar.data-v-dd383ca2 {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eee;
+}
+.stat-item.data-v-dd383ca2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10rpx;
+}
+.stat-number.data-v-dd383ca2 {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: var(--68fdd546);
+  line-height: 1.2;
+}
+.stat-label.data-v-dd383ca2 {
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 5rpx;
+}
+
+/* --- 功能入口列表 --- */
+.feature-list.data-v-dd383ca2 {
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+}
+.feature-item.data-v-dd383ca2 {
+  display: flex;
+  align-items: center;
+  padding: 25rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.feature-item.data-v-dd383ca2:last-child {
+  border-bottom: none;
+}
+.icon.data-v-dd383ca2 {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+  width: 50rpx;
+  text-align: center;
+}
+.name.data-v-dd383ca2 {
+  flex: 1;
+  font-size: 32rpx;
+  color: #333;
+}
+.arrow.data-v-dd383ca2 {
+  font-size: 30rpx;
+  color: #ccc;
+}
