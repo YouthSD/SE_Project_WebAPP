@@ -12,7 +12,7 @@ const _sfc_main = {
       messages: [
         { id: 1, friendId: 101, friendName: "小绿", avatar: "/static/avatar1.jpg", lastMessage: "你上次发的帖子太棒了！", time: "10:30" },
         { id: 2, friendId: 102, friendName: "程序猿", avatar: "/static/avatar2.jpg", lastMessage: "[图片] 看看我新写的代码", time: "昨天" },
-        { id: 3, friendId: 103, friendName: "老吃家", avatar: "/static/avatar3.jpg", lastMessage: "好的，明天见", time: "周一" }
+        { id: 3, friendId: 103, friendName: "美食家", avatar: "/static/avatar3.jpg", lastMessage: "好的，明天见", time: "周一" }
       ]
     };
   },

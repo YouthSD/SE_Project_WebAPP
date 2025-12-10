@@ -64,7 +64,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.o($options.goBack),
     b: common_vendor.p({
-      iconSize: "50"
+      ["icon-size"]: "50"
     }),
     c: common_vendor.t($data.requests.length),
     d: $data.primaryColor,

@@ -1,7 +1,6 @@
 <template>
   <view class="container">
     <view class="header">
-      <text class="back-btn" @click="goBack">返回</text>
       <text class="page-title">用户注册</text>
     </view>
 

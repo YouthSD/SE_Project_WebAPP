@@ -40,7 +40,7 @@
   margin-bottom: 10rpx;
 }
 .input-field.data-v-e4e4508d {
-  width: 100%;
+  width: 90%;
   height: 90rpx;
   padding: 0 20rpx;
   border: 1rpx solid #e0e0e0;

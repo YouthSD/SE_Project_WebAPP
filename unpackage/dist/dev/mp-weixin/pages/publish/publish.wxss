@@ -8,7 +8,7 @@
 
 /* --- 顶部导航栏 --- */
 .header.data-v-bfce3555 {
-  height: 90rpx;
+  height: 120rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,21 +18,21 @@
   padding-top: var(--status-bar-height); /* 适配刘海屏 */
 }
 .cancel-btn.data-v-bfce3555 {
-  font-size: 32rpx;
+  font-size: 34rpx;
   color: #888;
 }
 .page-title.data-v-bfce3555 {
-  font-size: 36rpx;
+  font-size: 38rpx;
   font-weight: bold;
   color: #333;
 }
 .publish-btn.data-v-bfce3555 {
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #ffffff;
-  padding: 0 25rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  border-radius: 30rpx;
+  padding: 0 30rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 35rpx;
   margin: 0;
   white-space: nowrap;
 }
@@ -177,7 +177,35 @@
   margin-left: 10rpx;
   font-weight: bold;
 }
-
+.suggested-tags-area.data-v-bfce3555 {
+  margin-top: 30rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eee;
+}
+.suggested-title.data-v-bfce3555 {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  display: block;
+}
+.suggested-tags-list.data-v-bfce3555 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.suggested-tag-item.data-v-bfce3555 {
+  font-size: 24rpx;
+  padding: 8rpx 15rpx;
+  border: 1px solid;
+  border-radius: 25rpx;
+  margin-right: 15rpx;
+  margin-bottom: 15rpx;
+  /* 使得点击区域更明确 */
+  opacity: 0.8; 
+  transition: opacity 0.2s;
+}
+.suggested-tag-item.data-v-bfce3555:active {
+  opacity: 1;
+}
 
 /* --- 底部功能栏 (媒体选择) --- */
 .media-action-bar.data-v-bfce3555 {

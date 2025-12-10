@@ -61,7 +61,7 @@ const _sfc_main = {
         });
         return;
       }
-      if (this.username === "admin" && this.password === "123456") {
+      if (this.username === "1" && this.password === "123456") {
         common_vendor.index.showToast({ title: "登录成功", icon: "success" });
         common_vendor.index.switchTab({
           url: "/pages/home/home"
@@ -80,24 +80,23 @@ const _sfc_main = {
 };
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
-    a: common_vendor.o((...args) => $options.goBack && $options.goBack(...args)),
-    b: common_vendor.o([($event) => $data.username = $event.detail.value, (...args) => $options.validateUsername && $options.validateUsername(...args)]),
-    c: $data.username,
-    d: $data.usernameError
+    a: common_vendor.o([($event) => $data.username = $event.detail.value, (...args) => $options.validateUsername && $options.validateUsername(...args)]),
+    b: $data.username,
+    c: $data.usernameError
   }, $data.usernameError ? {
-    e: common_vendor.t($data.usernameError)
+    d: common_vendor.t($data.usernameError)
   } : {}, {
-    f: common_vendor.o([($event) => $data.password = $event.detail.value, (...args) => $options.validatePassword && $options.validatePassword(...args)]),
-    g: $data.password,
-    h: $data.passwordError
+    e: common_vendor.o([($event) => $data.password = $event.detail.value, (...args) => $options.validatePassword && $options.validatePassword(...args)]),
+    f: $data.password,
+    g: $data.passwordError
   }, $data.passwordError ? {
-    i: common_vendor.t($data.passwordError)
+    h: common_vendor.t($data.passwordError)
   } : {}, {
-    j: $data.primaryColor,
-    k: !$options.isFormValid,
-    l: common_vendor.o((...args) => $options.handleLogin && $options.handleLogin(...args)),
-    m: $data.primaryColor,
-    n: common_vendor.o((...args) => $options.goToRegister && $options.goToRegister(...args))
+    i: $data.primaryColor,
+    j: !$options.isFormValid,
+    k: common_vendor.o((...args) => $options.handleLogin && $options.handleLogin(...args)),
+    l: $data.primaryColor,
+    m: common_vendor.o((...args) => $options.goToRegister && $options.goToRegister(...args))
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-e4e4508d"]]);

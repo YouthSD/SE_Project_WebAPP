@@ -25,11 +25,11 @@
       </view>
       
       <view class="stats-bar">
-        <view class="stat-item">
+        <view class="stat-item" @click="goToPage('userPosts')">
           <text class="stat-number">{{ userInfo.postCount }}</text>
           <text class="stat-label">动态</text>
         </view>
-        <view class="stat-item">
+        <view class="stat-item" @click="goToPage('userComments')">
           <text class="stat-number">{{ userInfo.commentCount }}</text>
           <text class="stat-label">评论</text>
         </view>
@@ -44,18 +44,15 @@
       <view class="feature-item" @click="goToPage('userPosts')">
         <text class="icon">📝</text>
         <text class="name">我的动态</text>
-        <text class="arrow">></text>
       </view>
       <view class="feature-item" @click="goToPage('userComments')">
         <text class="icon">💬</text>
         <text class="name">我的评论</text>
-        <text class="arrow">></text>
       </view>
       
       <view class="feature-item" @click="goToPage('settings')"> 
         <text class="icon">⚙️</text>
         <text class="name">设置</text>
-        <text class="arrow">></text>
       </view>
       
     </view>
@@ -89,10 +86,10 @@ export default {
       userInfo: {
         avatar: '/static/major.jpg', // 默认使用上传的 logo 图片
         username: 'dank1ng',
-        nickname: '空悲切',
+        nickname: '吕郑豪',
         friendCount: 15,
-        postCount: 5,
-        commentCount: 22,
+        postCount: 2,
+        commentCount: 2,
       },
       
       // 快捷修改模态框状态
@@ -179,8 +176,6 @@ export default {
                 url: path.startsWith('/') ? path : `/pages/profile/settings/${path}`
             });
         }
-		const targetUrl = path.startsWith('/') ? path : `/pages/profile/settings/${path}`;
-		console.log('跳转路径：', targetUrl); // 打印路径确认是否为 /pages/profile/settings/profileSettings
     },
     
     // 底部导航切换
@@ -201,7 +196,7 @@ export default {
 
 /* --- 顶部导航栏 --- */
 .header {
-  height: 90rpx;
+  height: 120rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -213,7 +208,7 @@ export default {
 }
 
 .page-title {
-  font-size: 38rpx;
+  font-size: 42rpx;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

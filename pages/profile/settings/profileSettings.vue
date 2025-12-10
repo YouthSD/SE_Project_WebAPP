@@ -2,7 +2,7 @@
   <view class="container">
     
     <view class="header" :style="{backgroundColor: primaryColor}">
-      <back-icon iconSize="50" @click="goBack" class="back-icon"></back-icon>
+      <back-icon icon-size="50" @click="goBack" class="back-icon"></back-icon>
       <text class="page-title">设置个人资料</text>
       <button class="save-btn" :style="{backgroundColor: primaryColor}" @click="handleSave">保存</button>
     </view>
@@ -160,7 +160,8 @@ export default {
 
 /* --- 顶部导航栏 (与 settings 样式保持一致) --- */
 .header {
-  height: 90rpx;
+  height: 120rpx;
+  line-height: 120rpx;
   display: flex;
   align-items: center;
   position: relative;
@@ -174,14 +175,23 @@ export default {
   position: absolute;
   left: 30rpx;
   font-size: 40rpx;
+  top: 50%;
+  top: calc(70% - 25rpx);
+  transform: translateY(-30%);
   cursor: pointer;
+  z-index: 60;
 }
 
 .page-title {
-  flex: 1;
-  text-align: center;
+  position: absolute;
+  left: 35%;
+  top: 50%;
+  transform: translateY(-30%); 
   font-size: 38rpx;
-  margin-left: 60rpx; /* 留出返回按钮的空间 */
+  font-weight: bold;
+  z-index: 60; 
+  margin: 0;
+  padding: 0;
 }
 
 .save-btn {

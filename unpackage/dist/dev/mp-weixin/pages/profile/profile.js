@@ -12,10 +12,10 @@ const _sfc_main = {
         avatar: "/static/major.jpg",
         // 默认使用上传的 logo 图片
         username: "dank1ng",
-        nickname: "空悲切",
+        nickname: "吕郑豪",
         friendCount: 15,
-        postCount: 5,
-        commentCount: 22
+        postCount: 2,
+        commentCount: 2
       },
       // 快捷修改模态框状态
       editingField: "",
@@ -83,8 +83,6 @@ const _sfc_main = {
           url: path.startsWith("/") ? path : `/pages/profile/settings/${path}`
         });
       }
-      const targetUrl = path.startsWith("/") ? path : `/pages/profile/settings/${path}`;
-      common_vendor.index.__f__("log", "at pages/profile/profile.vue:183", "跳转路径：", targetUrl);
     },
     // 底部导航切换
     switchTab(path) {
@@ -121,24 +119,26 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     e: common_vendor.t($data.userInfo.nickname),
     f: common_vendor.o(($event) => $options.quickEdit("nickname")),
     g: common_vendor.t($data.userInfo.postCount),
-    h: common_vendor.t($data.userInfo.commentCount),
-    i: common_vendor.t($data.userInfo.friendCount),
-    j: common_vendor.o(($event) => $options.goToPage("friendList")),
-    k: common_vendor.o(($event) => $options.goToPage("userPosts")),
-    l: common_vendor.o(($event) => $options.goToPage("userComments")),
-    m: common_vendor.o(($event) => $options.goToPage("settings")),
-    n: common_vendor.o($options.handleQuickEditConfirm),
-    o: common_vendor.p({
+    h: common_vendor.o(($event) => $options.goToPage("userPosts")),
+    i: common_vendor.t($data.userInfo.commentCount),
+    j: common_vendor.o(($event) => $options.goToPage("userComments")),
+    k: common_vendor.t($data.userInfo.friendCount),
+    l: common_vendor.o(($event) => $options.goToPage("friendList")),
+    m: common_vendor.o(($event) => $options.goToPage("userPosts")),
+    n: common_vendor.o(($event) => $options.goToPage("userComments")),
+    o: common_vendor.o(($event) => $options.goToPage("settings")),
+    p: common_vendor.o($options.handleQuickEditConfirm),
+    q: common_vendor.p({
       mode: "input",
       title: $data.modalTitle,
       value: $data.modalValue,
       placeholder: "请输入新内容"
     }),
-    p: common_vendor.sr("editModal", "dd383ca2-0"),
-    q: common_vendor.p({
+    r: common_vendor.sr("editModal", "dd383ca2-0"),
+    s: common_vendor.p({
       type: "dialog"
     }),
-    r: common_vendor.s(_ctx.__cssVars())
+    t: common_vendor.s(_ctx.__cssVars())
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-dd383ca2"]]);

@@ -6,7 +6,8 @@
 
 /* 导航栏：标题居中 + 返回按钮右移 */
 .header.data-v-729a9704 {
-  height: 90rpx;
+  height: 120rpx;
+  line-height: 120rpx;
   display: flex;
   justify-content: center; /* 标题居中 */
   align-items: center;
@@ -22,6 +23,7 @@
   position: absolute;
   left: 30rpx;
   font-size: 40rpx;
+  top: 55rpx;
   cursor: pointer;
 }
 .page-title.data-v-729a9704 {

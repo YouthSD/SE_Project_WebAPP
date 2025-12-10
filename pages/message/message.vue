@@ -75,7 +75,7 @@ export default {
       messages: [
         { id: 1, friendId: 101, friendName: '小绿', avatar: '/static/avatar1.jpg', lastMessage: '你上次发的帖子太棒了！', time: '10:30' },
         { id: 2, friendId: 102, friendName: '程序猿', avatar: '/static/avatar2.jpg', lastMessage: '[图片] 看看我新写的代码', time: '昨天' },
-        { id: 3, friendId: 103, friendName: '老吃家', avatar: '/static/avatar3.jpg', lastMessage: '好的，明天见', time: '周一' },
+        { id: 3, friendId: 103, friendName: '美食家', avatar: '/static/avatar3.jpg', lastMessage: '好的，明天见', time: '周一' },
       ],
     };
   },
@@ -160,11 +160,11 @@ export default {
 
 /* --- 顶部导航栏 --- */
 .header {
-  height: 90rpx;
-  line-height: 90rpx;
+  height: 120rpx;
+  line-height: 120rpx;
   text-align: center;
   color: #ffffff;
-  font-size: 38rpx;
+  font-size: 42rpx;
   font-weight: bold;
   padding-top: var(--status-bar-height);
   z-index: 10;

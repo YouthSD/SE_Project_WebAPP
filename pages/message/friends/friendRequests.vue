@@ -2,7 +2,7 @@
   <view class="container">
     
     <view class="header" :style="{backgroundColor: primaryColor}">
-      <back-icon iconSize="50" @click="goBack" class="back-icon"></back-icon>
+      <back-icon icon-size="50" @click="goBack" class="back-icon"></back-icon>
       <text class="page-title">好友请求 ({{ requests.length }})</text>
     </view>
     

@@ -57,14 +57,27 @@
       </view>
       
       <view class="tag-input-area">
-        <input class="tag-input" placeholder="#添加标签 (如：生活、技术)" v-model="currentTag" @confirm="addTag"/>
+        <input class="tag-input" placeholder="#添加标签（标签之前需要加上“#”）" v-model="currentTag" @confirm="addTag"/>
         <view class="tag-list">
           <text v-for="(tag, index) in tags" :key="index" class="tag-item" :style="{borderColor: primaryColor, color: primaryColor}">
             #{{ tag }} <text class="tag-delete" @click="removeTag(index)">×</text>
           </text>
         </view>
+		
+		<view class="suggested-tags-area">
+		    <text class="suggested-title">推荐标签：</text>
+			<view class="suggested-tags-list">
+				<text 
+				v-for="(tag, index) in suggestedTags" 
+				:key="'suggest-' + index" 
+				class="suggested-tag-item" 
+				:style="{borderColor: primaryColor, color: primaryColor}"
+				 @click="selectSuggestedTag(tag)">
+		              #{{ tag }}
+				</text>
+			</view>
+		</view>
       </view>
-      
     </scroll-view>
     
     <view class="media-action-bar">
@@ -105,7 +118,7 @@ export default {
       postContent: '',
       tags: [],
       currentTag: '',
-      
+      suggestedTags: ['日常', '技术分享', '美食探店', '旅行攻略', '学习心得', '搞笑段子', '穿搭'],
       postType: 0, // 0=纯文, 1=图文, 2=视频
       
       // 图片相关
@@ -138,7 +151,7 @@ export default {
           if (res.confirm) {
             this.resetForm();
             // 返回首页
-            this.switchTab('home'); 
+            this.switchTab('/pages/home/home'); 
           }
         }
       });
@@ -168,6 +181,16 @@ export default {
     removeTag(index) {
       this.tags.splice(index, 1);
     },
+	selectSuggestedTag(tag) {
+	      const trimmedTag = tag.trim();
+	      // 检查标签是否已存在，不存在则添加
+	      if (trimmedTag && !this.tags.includes(trimmedTag)) {
+	        // 如果输入框当前有内容，先将其添加（可选，这里选择直接操作标签列表）
+	        this.tags.push(trimmedTag);
+	      }
+	      // 弹出提示
+	      uni.showToast({ title: `已添加标签 #${trimmedTag}`, icon: 'none' });
+	 },
     
     // --- 图片/视频选择 ---
     chooseImage() {
@@ -361,7 +384,9 @@ export default {
       // ** 临时成功跳转 **
       uni.showToast({ title: '发布成功', icon: 'success' });
       this.resetForm();
-      this.switchTab('home');
+	  setTimeout(() => {
+	       this.switchTab('/pages/home/home');
+	    }, 1500); 
     },
     
     // --- 底部导航切换 (与 home.vue 保持一致) ---
@@ -385,7 +410,7 @@ export default {
 
 /* --- 顶部导航栏 --- */
 .header {
-  height: 90rpx;
+  height: 120rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -396,23 +421,23 @@ export default {
 }
 
 .cancel-btn {
-  font-size: 32rpx;
+  font-size: 34rpx;
   color: #888;
 }
 
 .page-title {
-  font-size: 36rpx;
+  font-size: 38rpx;
   font-weight: bold;
   color: #333;
 }
 
 .publish-btn {
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #ffffff;
-  padding: 0 25rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  border-radius: 30rpx;
+  padding: 0 30rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 35rpx;
   margin: 0;
   white-space: nowrap;
 }
@@ -574,6 +599,39 @@ export default {
   font-weight: bold;
 }
 
+.suggested-tags-area {
+  margin-top: 30rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.suggested-title {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.suggested-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.suggested-tag-item {
+  font-size: 24rpx;
+  padding: 8rpx 15rpx;
+  border: 1px solid;
+  border-radius: 25rpx;
+  margin-right: 15rpx;
+  margin-bottom: 15rpx;
+  /* 使得点击区域更明确 */
+  opacity: 0.8; 
+  transition: opacity 0.2s;
+}
+
+.suggested-tag-item:active {
+  opacity: 1;
+}
 
 /* --- 底部功能栏 (媒体选择) --- */
 .media-action-bar {

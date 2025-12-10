@@ -10,6 +10,7 @@ const _sfc_main = {
       postContent: "",
       tags: [],
       currentTag: "",
+      suggestedTags: ["日常", "技术分享", "美食探店", "旅行攻略", "学习心得", "搞笑段子", "穿搭"],
       postType: 0,
       // 0=纯文, 1=图文, 2=视频
       // 图片相关
@@ -42,7 +43,7 @@ const _sfc_main = {
         success: (res) => {
           if (res.confirm) {
             this.resetForm();
-            this.switchTab("home");
+            this.switchTab("/pages/home/home");
           }
         }
       });
@@ -69,6 +70,13 @@ const _sfc_main = {
     },
     removeTag(index) {
       this.tags.splice(index, 1);
+    },
+    selectSuggestedTag(tag) {
+      const trimmedTag = tag.trim();
+      if (trimmedTag && !this.tags.includes(trimmedTag)) {
+        this.tags.push(trimmedTag);
+      }
+      common_vendor.index.showToast({ title: `已添加标签 #${trimmedTag}`, icon: "none" });
     },
     // --- 图片/视频选择 ---
     chooseImage() {
@@ -179,7 +187,9 @@ const _sfc_main = {
       });
       common_vendor.index.showToast({ title: "发布成功", icon: "success" });
       this.resetForm();
-      this.switchTab("home");
+      setTimeout(() => {
+        this.switchTab("/pages/home/home");
+      }, 1500);
     },
     // --- 底部导航切换 (与 home.vue 保持一致) ---
     switchTab(path) {
@@ -233,11 +243,20 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     z: $data.primaryColor,
     A: $data.primaryColor,
-    B: $data.postType === 2 ? 1 : "",
-    C: common_vendor.o((...args) => $options.chooseImage && $options.chooseImage(...args)),
-    D: $data.postType === 1 ? 1 : "",
-    E: common_vendor.o((...args) => $options.chooseVideo && $options.chooseVideo(...args)),
-    F: common_vendor.f($data.tabs, (tab, k0, i0) => {
+    B: common_vendor.f($data.suggestedTags, (tag, index, i0) => {
+      return {
+        a: common_vendor.t(tag),
+        b: "suggest-" + index,
+        c: common_vendor.o(($event) => $options.selectSuggestedTag(tag), "suggest-" + index)
+      };
+    }),
+    C: $data.primaryColor,
+    D: $data.primaryColor,
+    E: $data.postType === 2 ? 1 : "",
+    F: common_vendor.o((...args) => $options.chooseImage && $options.chooseImage(...args)),
+    G: $data.postType === 1 ? 1 : "",
+    H: common_vendor.o((...args) => $options.chooseVideo && $options.chooseVideo(...args)),
+    I: common_vendor.f($data.tabs, (tab, k0, i0) => {
       return {
         a: common_vendor.t(tab.icon),
         b: tab.path === "publish" ? 1 : "",

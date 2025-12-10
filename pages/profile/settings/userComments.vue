@@ -3,7 +3,7 @@
     
     <!-- 调整导航栏：标题居中、返回按钮右移 -->
     <view class="header" :style="{backgroundColor: primaryColor}">
-      <back-icon iconSize="50" @click="goBack" class="back-icon"></back-icon>
+      <back-icon icon-size="50" @click="goBack" class="back-icon"></back-icon>
       <text class="page-title">我的评论</text>
     </view>
     
@@ -37,7 +37,6 @@ export default {
       primaryColor: '#00CC99',
       comments: [
         { id: 1, postId: 101, postTitle: '春天种的植物发芽了', content: '写得太好了！照片也很漂亮！', date: '2025-12-09 10:30' },
-        { id: 2, postId: 102, postTitle: '今日份美食分享', content: '看起来好好吃，求做法！', date: '2025-12-08 15:20' },
         { id: 3, postId: 103, postTitle: '关于uni-app的一些心得', content: '学到了，感谢分享！', date: '2025-12-07 09:00' },
       ]
     };
@@ -51,7 +50,7 @@ export default {
     },
     fetchUserComments() {},
     goToPost(postId) {
-      uni.navigateTo({ url: `postDetail?id=${postId}` });
+      uni.navigateTo({ url: `/pages/home/postDetail?id=${postId}` });
     },
     confirmDelete(comment) {
       uni.showModal({
@@ -80,7 +79,8 @@ export default {
 
 /* 导航栏：标题居中 + 返回按钮右移 */
 .header {
-  height: 90rpx;
+  height: 120rpx;
+  line-height: 120rpx;
   display: flex;
   justify-content: center; /* 标题居中 */
   align-items: center;
@@ -96,6 +96,7 @@ export default {
   position: absolute;
   left: 30rpx;
   font-size: 40rpx;
+  top: 55rpx;
   cursor: pointer;
 }
 

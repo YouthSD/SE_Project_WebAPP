@@ -167,7 +167,7 @@ export default {
       primaryColor: '#00CC99',
       accentColor: '#FFD700',
       postId: null,
-      scrollIntoView: '',
+      scrollIntoView: '详情',
       activeSection: 'content', // 初始状态：正文
       contentTop: 0, // 正文在scroll-view内的顶部位置
       commentsTop: 0, // 评论在scroll-view内的顶部位置
